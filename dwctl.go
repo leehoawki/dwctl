@@ -103,7 +103,7 @@ func deployment(application string, version string) {
 									Value: "http://10.141.48.10:18080/",
 								},
 							},
-							ImagePullPolicy: v1.PullIfNotPresent,
+							ImagePullPolicy: v1.PullAlways,
 						},
 					},
 				},
