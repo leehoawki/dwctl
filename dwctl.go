@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	appv1 "k8s.io/api/apps/v1"
 	v1 "k8s.io/api/core/v1"
@@ -50,6 +51,10 @@ func main() {
 }
 
 func deployment(application string, version string) {
+	var r v1.ResourceRequirements
+	j := `{"limits": {"cpu":"500m", "memory": "2Gi"}, "requests": {"cpu":"500m", "memory": "2Gi"}}`
+	json.Unmarshal([]byte(j), &r)
+
 	deployment := &appv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      application,
@@ -104,6 +109,7 @@ func deployment(application string, version string) {
 								},
 							},
 							ImagePullPolicy: v1.PullAlways,
+							Resources:       r,
 						},
 					},
 				},
