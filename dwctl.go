@@ -91,6 +91,10 @@ func deployment(application string, version string) {
 							},
 							Env: []v1.EnvVar{
 								{
+									Name:  "APP_ID",
+									Value: application,
+								},
+								{
 									Name:  "ENV",
 									Value: "DEV",
 								},
