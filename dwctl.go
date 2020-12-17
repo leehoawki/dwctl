@@ -108,11 +108,11 @@ func deployment(application string, version string) {
 							Resources: v1.ResourceRequirements{
 								Limits: v1.ResourceList{
 									"cpu":    resource.MustParse("500m"),
-									"memory": resource.MustParse("2Gi"),
+									"memory": resource.MustParse("1Gi"),
 								},
 								Requests: v1.ResourceList{
 									"cpu":    resource.MustParse("500m"),
-									"memory": resource.MustParse("2Gi"),
+									"memory": resource.MustParse("1Gi"),
 								},
 							},
 						},
