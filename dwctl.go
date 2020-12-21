@@ -107,12 +107,12 @@ func deployment(application string, version string) {
 							ImagePullPolicy: v1.PullAlways,
 							Resources: v1.ResourceRequirements{
 								Limits: v1.ResourceList{
-									"cpu":    resource.MustParse("500m"),
-									"memory": resource.MustParse("1Gi"),
+									"cpu":    resource.MustParse("2000m"),
+									"memory": resource.MustParse("2Gi"),
 								},
 								Requests: v1.ResourceList{
-									"cpu":    resource.MustParse("500m"),
-									"memory": resource.MustParse("1Gi"),
+									"cpu":    resource.MustParse("2000m"),
+									"memory": resource.MustParse("2Gi"),
 								},
 							},
 						},
