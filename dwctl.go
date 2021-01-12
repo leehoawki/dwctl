@@ -112,7 +112,7 @@ func deployment(application string, version string) {
 								},
 								Requests: v1.ResourceList{
 									"cpu":    resource.MustParse("2000m"),
-									"memory": resource.MustParse("2Gi"),
+									"memory": resource.MustParse("500Mi"),
 								},
 							},
 						},
