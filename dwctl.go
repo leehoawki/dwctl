@@ -100,8 +100,12 @@ func deployment(application string, version string) {
 									Value: "DEV",
 								},
 								{
-									Name:  "APOLLO_CONFIGSERVICE",
-									Value: "http://10.141.48.10:18080/",
+									Name:  "SW_AGENT_COLLECTOR_BACKEND_SERVICES",
+									Value: "10.141.48.10:11800",
+								},
+								{
+									Name:  "SW_AGENT_NAME",
+									Value: application,
 								},
 							},
 							ImagePullPolicy: v1.PullAlways,
