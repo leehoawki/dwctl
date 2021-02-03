@@ -24,7 +24,7 @@ var config *rest.Config
 var client *kubernetes.Clientset
 var err error
 
-const REPO string = "10.29.3.10:5000"
+const REPO string = "nexus3.showcai.com.cn:5000"
 const NAMESPACE string = "dev"
 
 func main() {
