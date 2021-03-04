@@ -79,6 +79,9 @@ func deployment(application string, version string) {
 					},
 				},
 				Spec: v1.PodSpec{
+					ImagePullSecrets: []v1.LocalObjectReference{
+						{Name: "dw-secret"},
+					},
 					Containers: []v1.Container{
 						{
 							Name:  application,
