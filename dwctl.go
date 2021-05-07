@@ -13,11 +13,13 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
 	"path/filepath"
+	"strings"
 )
 
 var (
 	application = flag.String("a", "", "Application name")
 	version     = flag.String("v", "latest", "Application version")
+	env         = flag.String("e", "dev", "Deployment env, default dev")
 )
 
 var config *rest.Config
@@ -25,7 +27,9 @@ var client *kubernetes.Clientset
 var err error
 
 const REPO string = "nexus3.showcai.com.cn:5000"
-const NAMESPACE string = "dev"
+
+var NAMESPACE = "dev"
+var APOLLO = "http://10.141.48.10:18080/"
 
 func main() {
 	flag.Parse()
@@ -45,7 +49,15 @@ func main() {
 		panic("application is empty")
 	}
 
-	println("application=" + *application + ", version=" + *version)
+	if *env != "" {
+		NAMESPACE = *env
+	}
+
+	if *env != "sit" {
+		APOLLO = "http://10.141.48.10:28080/"
+	}
+
+	println("application=" + *application + ", version=" + *version + ", env=" + *env)
 	deployment(*application, *version)
 	service(*application)
 }
@@ -100,7 +112,7 @@ func deployment(application string, version string) {
 								},
 								{
 									Name:  "ENV",
-									Value: "DEV",
+									Value: strings.ToUpper(NAMESPACE),
 								},
 								{
 									Name:  "APOLLO_CONFIGSERVICE",
