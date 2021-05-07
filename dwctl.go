@@ -53,7 +53,7 @@ func main() {
 		NAMESPACE = *env
 	}
 
-	if *env != "sit" {
+	if *env == "sit" {
 		APOLLO = "http://10.141.48.10:28080/"
 	}
 
