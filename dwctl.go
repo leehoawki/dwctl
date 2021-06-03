@@ -116,7 +116,7 @@ func deployment(application string, version string) {
 								},
 								{
 									Name:  "APOLLO_CONFIGSERVICE",
-									Value: "http://10.141.48.10:18080/",
+									Value: APOLLO,
 								},
 								{
 									Name:  "SW_AGENT_COLLECTOR_BACKEND_SERVICES",
